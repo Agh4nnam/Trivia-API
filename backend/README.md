@@ -70,11 +70,16 @@ REVIEW_COMMENT
 ```
 This README is missing documentation of your endpoints. Below is an example for your endpoint to get all categories. Please use it as a reference for creating your documentation and resubmit your code. 
 
+
+API 
 Endpoints
 GET '/categories'
-GET ...
-POST ...
-DELETE ...
+GET '/questions'
+GET '/categories/<int:category_id>/questions'
+POST '/questions'
+POST '/questions/search'
+POST '/quizzes'
+DELETE '/questions/<int:question_id>'
 
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -88,6 +93,72 @@ GET '/categories'
 '6' : "Sports"}
 
 ```
+
+GET '/questions'
+- Fetch a list of questions (10 per page) as JSON, each question contains a question,   answer, category and a difficulty.
+-Request arguement: url paramter  'page={int}'
+- Returns: an array of objects containing a maximum of 10 questions, each is self-contained with it's own properties
+{
+      "answer": "Maya Angelou", 
+      "category": 4, 
+      "difficulty": 2, 
+      "id": 5, 
+      "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+    }, 
+    {
+      "answer": "Muhammad Ali", 
+      "category": 4, 
+      "difficulty": 1, 
+      "id": 9, 
+      "question": "What boxer's original name is Cassius Clay?"
+    }, 
+    {
+        ...
+        ...
+    }
+
+GET '/categories/<int:category_id>/questions'
+- Fetch an array of questions as JSON objects based on the category they belong
+- Request argument: category_id
+- Returns: an array of questions in JSON object format
+{
+      "answer": "Apollo 13", 
+      "category": 5, 
+      "difficulty": 4, 
+      "id": 2, 
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    }, 
+    {
+      "answer": "Tom Cruise", 
+      "category": 5, 
+      "difficulty": 4, 
+      "id": 4, 
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    },
+    {
+        ...
+        ...
+    }
+
+POST '/questions'
+- Add a question with all it's properties into the database
+- Request argument: none
+- Returns: the inserted question as JSON object
+
+POST '/questions/search'
+- Look up a question in the database using keywords (case insensitive) and returns a list of questions that matches the keywords as JSON objects.
+- Request argument: keyword "serachTerm"
+- Returns: array of questions that contains the searched term in JSON format
+POST '/quizzes'
+- Play the trivia game selecting any or all categories to recieve a list of random questions
+-Request argument: a category to choose from or all possible categories
+-Return: A randomly chosen question as JSON formatted object
+
+DELETE '/questions/<int:question_id>'
+- Delete a specific question from the database
+- Request arguement: Question ID
+- Returns: none
+
 
 
 ## Testing
