@@ -92,7 +92,7 @@ GET '/categories'
 '5' : "Entertainment",
 '6' : "Sports"}
 
-```
+
 
 GET '/questions'
 - Fetch a list of questions (10 per page) as JSON, each question contains a question,   answer, category and a difficulty.
@@ -158,7 +158,7 @@ DELETE '/questions/<int:question_id>'
 - Delete a specific question from the database
 - Request arguement: Question ID
 - Returns: none
-
+```
 
 
 ## Testing
